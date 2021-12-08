@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 
 export const CareAlways = () => (
     <>
@@ -21,9 +22,9 @@ export const CareAlways = () => (
             <Login />
         </Route>
 
-        {/* <Route path="/register">
+        <Route path="/register">
             <Register />
-        </Route> */}
+        </Route>
 
     </>
 )
