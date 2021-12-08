@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 
 export const CareAlways = () => (
     <>
@@ -11,7 +12,7 @@ export const CareAlways = () => (
                 return <>
                     <Route>
                         <NavBar />
-                        {/* <ApplicationViews /> */}
+                        <ApplicationViews />
                     </Route>
                 </>
             } else {

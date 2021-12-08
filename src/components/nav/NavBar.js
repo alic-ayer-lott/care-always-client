@@ -7,7 +7,7 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link className="nav-link" to="/">Profile</Link>
+                <Link className="nav-link" to="/profile">Profile</Link>
             </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/">Providers</Link>
