@@ -1,11 +1,13 @@
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 
 export const CareAlways = () => (
     <>
-        {/* <Route render={() => {
+        <Route render={() => {
             if (localStorage.getItem("lu_token")) {
                 return <>
                     <Route>
@@ -16,7 +18,7 @@ export const CareAlways = () => (
             } else {
                 return <Redirect to="/login" />
             }
-        }} /> */}
+        }} />
 
         <Route path="/login">
             <Login />
