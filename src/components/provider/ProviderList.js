@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { getProviders, deleteProvider } from "./ProviderManager.js"
-// import { Link } from "react-router-dom"
 
 export const ProviderList = () => {
     const history = useHistory()
