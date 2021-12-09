@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { getProviders } from "./ProviderManager.js"
+import { getProviders, deleteProvider } from "./ProviderManager.js"
 // import { Link } from "react-router-dom"
 
 export const ProviderList = () => {
@@ -31,9 +31,23 @@ export const ProviderList = () => {
                         <div>Address: {provider.address}</div>
                         <div>Phone Number: {provider.phone}</div>
 
+                        <div>
+                            <button className="btn btn-delete"
+                                onClick={() => deleteProvider(provider.id).then(() => providerFetcher())}
+                            >Delete Provider</button>
+                        </div>
+
                     </section>
                 })
             }
+
+            <div>
+                <button className="btn btn-create"
+                    onClick={() => {
+                        history.push({ pathname: "/providers/new" })
+                    }}
+                >Add New Provider</button>
+            </div>
         </article>
     )
 }
