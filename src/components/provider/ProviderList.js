@@ -25,7 +25,11 @@ export const ProviderList = () => {
             {
                 providers.map(provider => {
                     return <section key={provider.id} className="provider__list">
-                        <div>{provider.first_name}</div>
+                        <div>Name: {provider.first_name} {provider.last_name}</div>
+                        <div>Specialty: {provider.specialty}</div>
+                        <div>Practice: {provider.practice}</div>
+                        <div>Address: {provider.address}</div>
+                        <div>Phone Number: {provider.phone}</div>
 
                     </section>
                 })
