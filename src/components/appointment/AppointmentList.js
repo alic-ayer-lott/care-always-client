@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { getAppointments } from "./AppointmentManager"
+import { deleteAppointment, getAppointments } from "./AppointmentManager"
 
 export const AppointmentList = () => {
     const history = useHistory()
@@ -23,9 +23,15 @@ export const AppointmentList = () => {
             {
                 appointments.map(appointment => {
                     return <section key={appointment.id} className="appointment__list">
-                        <div>Date:{appointment.date}</div>
+                        <div>Date: {appointment.date}</div>
                         <div>Time: {appointment.time}</div>
                         <div>Provider: {appointment.provider.first_name} {appointment.provider.last_name}</div>
+
+                        <div>
+                            <button className="btn btn-delete"
+                                onClick={() => deleteAppointment(appointment.id).then(() => appointmentFetcher())}
+                                >Delete Appointment</button>
+                        </div>
                     </section>
                 })
             }
