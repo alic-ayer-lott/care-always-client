@@ -8,7 +8,7 @@ import { ApplicationViews } from "./ApplicationViews"
 export const CareAlways = () => (
     <>
         <Route render={() => {
-            if (localStorage.getItem("lu_token")) {
+            if (localStorage.getItem("ca_token")) {
                 return <>
                     <Route>
                         <NavBar />
