@@ -20,6 +20,15 @@ export const AppointmentList = () => {
             <header className="appointments__header">
                 <h1>Your Appointments</h1>
             </header>
+            {
+                appointments.map(appointment => {
+                    return <section key={appointment.id} className="appointment__list">
+                        <div>Date:{appointment.date}</div>
+                        <div>Time: {appointment.time}</div>
+                        <div>Provider: {appointment.provider.first_name} {appointment.provider.last_name}</div>
+                    </section>
+                })
+            }
         </article>
     )
 }
