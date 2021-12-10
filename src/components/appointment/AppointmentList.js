@@ -26,6 +26,7 @@ export const AppointmentList = () => {
                         <div>Date: {appointment.date}</div>
                         <div>Time: {appointment.time}</div>
                         <div>Provider: {appointment.provider.first_name} {appointment.provider.last_name}</div>
+                        
                         <div>Questions for this appointment:</div>
                         <div>{appointment.question.content}</div>
 
