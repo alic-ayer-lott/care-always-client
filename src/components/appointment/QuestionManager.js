@@ -7,7 +7,8 @@ export const getQuestions = () => {
         .then(response => response.json())
 }
 
-export const createQuestion = (question) => {
+export const createQuestion = (question, appointmentId) => {
+    question.appointmentId = parseInt(appointmentId)
     return fetch("http://localhost:8000/questions", {
         method: "POST",
         headers:{

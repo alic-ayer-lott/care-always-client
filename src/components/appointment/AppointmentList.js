@@ -51,6 +51,13 @@ export const AppointmentList = () => {
                             })
                         }
                         <div>
+                            <button className="btn btn-create"
+                                onClick={() => {
+                                    history.push({ pathname: `/questions/new/${appointment.id}` })
+                                }}
+                            >Add New Question</button>
+                        </div>
+                        <div>
                             <button className="btn btn-delete"
                                 onClick={() => deleteAppointment(appointment.id).then(() => appointmentFetcher())}
                             >Delete Appointment</button>
