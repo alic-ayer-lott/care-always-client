@@ -53,6 +53,14 @@ export const AppointmentList = () => {
                     </section>
                 })
             }
+
+            <div>
+                <button className="btn btn-create"
+                    onClick={() => {
+                        history.push({ pathname: "/appointments/new" })
+                    }}
+                >Add New Appointment</button>
+            </div>
         </article>
     )
 }
