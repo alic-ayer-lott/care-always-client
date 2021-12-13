@@ -1,10 +1,11 @@
-import { current } from "immer"
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { createAppointment, getAppointments } from "./AppointmentManager"
+import { getProviders } from "../provider/ProviderManager"
 
 export const AppointmentForm = () => {
     const history = useHistory()
+    const [providers, setProviders] = useState([])
     const [currentAppointment, setAppointments] = useState({
         "date": "",
         "time": "",
@@ -12,6 +13,11 @@ export const AppointmentForm = () => {
         "user": ""
     })
     const { appointmentId } = useParams()
+
+    useEffect(() => {
+        getProviders()
+        .then((data) => setProviders(data))
+    }, [])
 
     const saveAppointment = (appointment) => {
         appointment.preventDefault()
@@ -64,9 +70,17 @@ export const AppointmentForm = () => {
             <fieldset>
                 <div className="form-input">
                     <label htmlFor="providerId">Provider: </label>
-                    <input type="text" name="date" value={currentAppointment.date} required autoFocus className="form-control"
-                        onChange={changeAppointmentState}
-                    />
+                    <select name="providerId" value={currentAppointment.providerId} className="form-control"
+                        onChange={ changeAppointmentState }>
+                            <option value="0">Select a provider...</option>
+                            {
+                                providers.map(provider => (
+                                    <option key={provider.id} value={provider.id}>
+                                        {provider.first_name} {provider.last_name}
+                                    </option>
+                                ))
+                            }
+                        </select>
                 </div>
             </fieldset>
 
