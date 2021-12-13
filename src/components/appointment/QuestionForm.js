@@ -42,7 +42,7 @@ export const QuestionForm = () => {
         <form className="newQuestionForm">
             <h1 className="questionForm__title">Add New Question</h1>
             <fieldset>
-                <div classNam="form-input">
+                <div className="form-input">
                     <input type="text" name="content" value={currentQuestion.content} required autoFocus className="form-control"
                         placeholder="Please add your question..."
                         onChange={changeQuestionState}
