@@ -5,6 +5,7 @@ import { ProviderList } from "./provider/ProviderList"
 import { ProviderForm } from "./provider/ProviderForm"
 import { AppointmentList } from "./appointment/AppointmentList"
 import { AppointmentForm } from "./appointment/AppointmentForm"
+import { QuestionForm } from "./appointment/QuestionForm"
 
 export const ApplicationViews = () => {
     return <>
@@ -23,6 +24,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route exact path="/appointments/new">
             <AppointmentForm />
+        </Route>
+        <Route exact path="/questions/new/:appointmentId(\d+)">
+            <QuestionForm />
         </Route>
     </main>
     </>
