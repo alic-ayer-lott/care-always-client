@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { deleteAppointment, getAppointments } from "./AppointmentManager"
+import { getQuestions } from "./QuestionManager"
 
 export const AppointmentList = () => {
     const history = useHistory()
-    const [appointments, seeAppointments ] = useState([])
+    const [appointments, seeAppointments] = useState([])
+    const [questions, seeQuestions] = useState([])
 
     const appointmentFetcher = () => {
         getAppointments()
             .then(data => seeAppointments(data))
     }
 
+    const questionFetcher = () => {
+        getQuestions()
+            .then(data => seeQuestions(data))
+    }
+
     useEffect(() => {
-        appointmentFetcher()
+        appointmentFetcher(); questionFetcher()
     }, [])
+
 
     return (
         <article className="appointments">
@@ -27,10 +35,20 @@ export const AppointmentList = () => {
                         <div>Time: {appointment.time}</div>
                         <div>Provider: {appointment.provider.first_name} {appointment.provider.last_name}</div>
 
+                        <div>Questions for this appointment:</div>
+                        {
+                            questions.map(question => {
+                                if (question.appointment.id === appointment.id) {
+                                    return <section key={question.id} className="question__list">
+                                        <div>{question.content}</div>
+                                    </section>
+                                }
+                            })
+                        }
                         <div>
                             <button className="btn btn-delete"
                                 onClick={() => deleteAppointment(appointment.id).then(() => appointmentFetcher())}
-                                >Delete Appointment</button>
+                            >Delete Appointment</button>
                         </div>
                     </section>
                 })
