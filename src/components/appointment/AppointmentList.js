@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { deleteAppointment, getAppointments } from "./AppointmentManager"
-import { getQuestions } from "./QuestionManager"
+import { getQuestions, deleteQuestion } from "./QuestionManager"
 
 export const AppointmentList = () => {
     const history = useHistory()
@@ -41,6 +41,11 @@ export const AppointmentList = () => {
                                 if (question.appointment.id === appointment.id) {
                                     return <section key={question.id} className="question__list">
                                         <div>{question.content}</div>
+                                        <div>
+                                            <button className="btn btn-delete"
+                                                onClick={() => deleteQuestion(question.id).then(() => questionFetcher())}
+                                            >Delete Question</button>
+                                        </div>
                                     </section>
                                 }
                             })
