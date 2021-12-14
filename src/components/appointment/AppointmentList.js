@@ -46,6 +46,12 @@ export const AppointmentList = () => {
                                                 onClick={() => deleteQuestion(question.id).then(() => questionFetcher())}
                                             >Delete Question</button>
                                         </div>
+                                        <div>
+                                            <button className="btn btn-edit"
+                                                onClick={() => {
+                                                    history.push({ pathname: `/questions/edit/${question.id}` })
+                                                }}>Edit Question</button>
+                                        </div>
                                     </section>
                                 }
                             })

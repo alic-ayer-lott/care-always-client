@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
-import { createQuestion, getQuestions } from "./QuestionManager"
+import { createQuestion, updateQuestion, getSingleQuestion } from "./QuestionManager"
 
 export const QuestionForm = () => {
     const history = useHistory()
@@ -11,14 +11,6 @@ export const QuestionForm = () => {
     const { questionId } = useParams()
     const { appointmentId } = useParams()
 
-    const saveQuestion = (question) => {
-        question.preventDefault()
-
-        createQuestion(currentQuestion, appointmentId).then(() => {
-            history.push('/appointments')
-        })
-    }
-
     const changeQuestionState = (question) => {
         const newQuestionState = Object.assign({}, currentQuestion)
         newQuestionState[question.target.name] = question.target.value
@@ -27,7 +19,7 @@ export const QuestionForm = () => {
 
     useEffect(() => {
         if (questionId) {
-            getQuestions(questionId).then((questionData) => setQuestions(
+            getSingleQuestion(questionId).then((questionData) => setQuestions(
                 {
                     ...questionData,
                     content: questionData.content,
@@ -40,7 +32,7 @@ export const QuestionForm = () => {
 
     return (
         <form className="newQuestionForm">
-            <h1 className="questionForm__title">Add New Question</h1>
+            <h1 className="questionForm__title">{questionId ? "Update Question" : "Add New Question"}</h1>
             <fieldset>
                 <div className="form-input">
                     <input type="text" name="content" value={currentQuestion.content} required autoFocus className="form-control"
@@ -51,8 +43,18 @@ export const QuestionForm = () => {
             </fieldset>
 
             <button type="submit"
-                onClick={saveQuestion}
-                className="btn btn-save">Save Question</button>
+                onClick={evt => {
+                    evt.preventDefault()
+                    if (questionId) {
+                        updateQuestion(currentQuestion)
+                            .then(() => history.push("/appointments"))
+                    } else {
+                        createQuestion(currentQuestion, appointmentId).then(() => {
+                            history.push('/appointments')
+                        })
+                    }
+                }}
+                className="btn btn-primary">Save Question</button>
         </form>
     )
 

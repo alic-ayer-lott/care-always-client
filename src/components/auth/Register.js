@@ -36,7 +36,7 @@ export const Register = () => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("ca_token", res.token)
-                        history.push("/")
+                        history.push("/profile")
                     }
                 })
         } else {

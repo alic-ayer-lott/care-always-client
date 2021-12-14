@@ -28,6 +28,9 @@ export const ApplicationViews = () => {
         <Route exact path="/questions/new/:appointmentId(\d+)">
             <QuestionForm />
         </Route>
+        <Route exact path="/questions/edit/:questionId(\d+)">
+            <QuestionForm />
+        </Route>
     </main>
     </>
 }
