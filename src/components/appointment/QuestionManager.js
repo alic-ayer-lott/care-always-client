@@ -40,3 +40,12 @@ export const deleteQuestion = questionId => {
     })
         .then(getQuestions)
 }
+
+export const getSingleQuestion = (id) => {
+    return fetch(`http://localhost:8000/questions/${id}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("ca_token")}`
+        }
+    })
+        .then(response => response.json())
+}
