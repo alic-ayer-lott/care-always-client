@@ -1,5 +1,5 @@
 export const getProfile = () => {
-    return fetch("http://localhost:8000/profile", {
+    return fetch("https://care-always.herokuapp.com/profile", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
         }

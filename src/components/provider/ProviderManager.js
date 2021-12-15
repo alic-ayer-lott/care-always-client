@@ -1,5 +1,5 @@
 export const getProviders = () => {
-    return fetch("http://localhost:8000/providers", {
+    return fetch("https://care-always.herokuapp.com/providers", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
         }
@@ -8,7 +8,7 @@ export const getProviders = () => {
 }
 
 export const createProvider = (provider) => {
-    return fetch("http://localhost:8000/providers", {
+    return fetch("https://care-always.herokuapp.com/providers", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`,
@@ -20,7 +20,7 @@ export const createProvider = (provider) => {
 }
 
 export const deleteProvider = providerId => {
-    return fetch(`http://localhost:8000/providers/${ providerId }`, {
+    return fetch(`https://care-always.herokuapp.com/providers/${ providerId }`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`

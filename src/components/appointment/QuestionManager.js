@@ -1,5 +1,5 @@
 export const getQuestions = () => {
-    return fetch("http://localhost:8000/questions", {
+    return fetch("https://care-always.herokuapp.com/questions", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
         }
@@ -9,7 +9,7 @@ export const getQuestions = () => {
 
 export const createQuestion = (question, appointmentId) => {
     question.appointmentId = parseInt(appointmentId)
-    return fetch("http://localhost:8000/questions", {
+    return fetch("https://care-always.herokuapp.com/questions", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`,
@@ -21,7 +21,7 @@ export const createQuestion = (question, appointmentId) => {
 }
 
 export const updateQuestion = (question) => {
-    return fetch (`http://localhost:8000/questions/${question.id}`, {
+    return fetch (`https://care-always.herokuapp.com/questions/${question.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("ca_token")}`,
@@ -32,7 +32,7 @@ export const updateQuestion = (question) => {
 }
 
 export const deleteQuestion = questionId => {
-    return fetch(`http://localhost:8000/questions/${ questionId }`, {
+    return fetch(`https://care-always.herokuapp.com/questions/${ questionId }`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
@@ -42,7 +42,7 @@ export const deleteQuestion = questionId => {
 }
 
 export const getSingleQuestion = (id) => {
-    return fetch(`http://localhost:8000/questions/${id}`, {
+    return fetch(`https://care-always.herokuapp.com/questions/${id}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
         }

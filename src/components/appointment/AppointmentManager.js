@@ -1,5 +1,5 @@
 export const getAppointments = () => {
-    return fetch("http://localhost:8000/appointments", {
+    return fetch("https://care-always.herokuapp.com/appointments", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
         }
@@ -8,7 +8,7 @@ export const getAppointments = () => {
 }
 
 export const createAppointment = (appointment) => {
-    return fetch("http://localhost:8000/appointments", {
+    return fetch("https://care-always.herokuapp.com/appointments", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`,
@@ -20,7 +20,7 @@ export const createAppointment = (appointment) => {
 }
 
 export const deleteAppointment = appointmentId => {
-    return fetch(`http://localhost:8000/appointments/${ appointmentId }`, {
+    return fetch(`https://care-always.herokuapp.com/appointments/${ appointmentId }`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("ca_token")}`
